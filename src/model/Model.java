@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import main.MVC;
-import view.View;
 
 /**
  * This class is thread-safe because of thread confinement.
@@ -39,7 +38,7 @@ public class Model {
             pieList.add(new PieChart.Data(party.getName(), party.getVotes()));
         }
 
-        mvc.forEachView(View::onModelChanged);
+        mvc.forEachView(view -> view.onModelChanged());
     }
 
 	@UiThread
@@ -53,7 +52,7 @@ public class Model {
             }
         }
 
-        mvc.forEachView(View::onModelChanged);
+        mvc.forEachView(view -> view.onModelChanged());
     }
 
 	@UiThread
@@ -67,7 +66,7 @@ public class Model {
             }
         }
 
-        mvc.forEachView(View::onModelChanged);
+        mvc.forEachView(view -> view.onModelChanged());
     }
 
     @UiThread
@@ -86,6 +85,6 @@ public class Model {
             }
         }
 
-        mvc.forEachView(View::onModelChanged);
+        mvc.forEachView(view -> view.onModelChanged());
     }
 }
